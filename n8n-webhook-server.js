@@ -5,9 +5,10 @@ import { sendWhatsApp } from "./twilio-handler.js";
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.post("/webhook/lead", async (req, res) => {
-  const { message, name, phone } = req.body;
+  const { Body: message, From: phone } = req.body;
 
   if (!message) {
     return res.status(400).json({ success: false, error: "Missing 'message' field" });
