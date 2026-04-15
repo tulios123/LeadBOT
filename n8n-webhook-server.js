@@ -3,9 +3,6 @@ import { handleMessage } from "./claude-handler.js";
 import { saveLead, getConversationHistory } from "./airtable-handler.js";
 import { sendWhatsApp } from "./twilio-handler.js";
 
-console.log('SID:', JSON.stringify(process.env.TWILIO_ACCOUNT_SID));
-console.log('TOKEN length:', process.env.TWILIO_AUTH_TOKEN?.length);
-
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
