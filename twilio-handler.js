@@ -8,7 +8,7 @@ export async function sendWhatsApp(to, message) {
 
   const result = await client.messages.create({
     from: process.env.TWILIO_WHATSAPP_FROM,
-    to: "whatsapp:" + to,
+    to: to.startsWith("whatsapp:") ? to : "whatsapp:" + to,
     body: message,
   });
 

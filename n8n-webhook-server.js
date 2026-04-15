@@ -32,8 +32,8 @@ app.post("/webhook/lead", async (req, res) => {
   const date = new Date().toISOString();
 
   try {
-    await saveLead({ Name: name, Message: message, Phone: phone, Date: date, Role: "user" });
-    await saveLead({ Name: name, Reply: reply, Phone: phone, Date: date, Role: "assistant" });
+    await saveLead({ Message: message, Phone: phone, Date: date, Role: "user" });
+    await saveLead({ Reply: reply, Phone: phone, Date: date, Role: "assistant" });
   } catch (error) {
     console.error("Airtable error (non-fatal):", error.message);
   }
